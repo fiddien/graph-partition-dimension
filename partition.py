@@ -1,9 +1,3 @@
-#!/usr/bin/env python3.6
-# -*- coding: utf-8 -*-
-"""
-@author: ilmaaliyaf
-"""
-
 def partition(Set, m):
     """ a function to create all possible partitions of a set """
 

@@ -1,15 +1,8 @@
-#!/usr/bin/env python3.6
-# -*- coding: utf-8 -*-
-"""
-@author: ilmaaliyaf
-"""
 import sys
-import PyQt5
 import PyQt5.QtWidgets as Widget
-import networkx as nx
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont
 from PyQt5.QtWebEngineWidgets import QWebEngineView
+import networkx as nx
 from graph_object import Graph, productGraph
 from pyvis.network import Network
 
@@ -17,7 +10,6 @@ class MainProgram(Widget.QComboBox):
 
     def __init__(self):
         super(MainProgram, self).__init__()
-        QFont().setPointSize(20)
 
         self.initials = ('g', 'h', 'p')
        
@@ -93,7 +85,7 @@ class MainProgram(Widget.QComboBox):
         self.unit_ui()
 
         self.show()
-        self.setWindowState(PyQt5.QtCore.Qt.WindowMaximized)
+        self.setWindowState(Qt.WindowMaximized)
         
     def center(self):
         qr = self.frameGeometry()
@@ -127,8 +119,8 @@ class MainProgram(Widget.QComboBox):
         
         for i, x in enumerate(self.initials):
             self.nt[x]['nt'].from_nx(self.nt[x]['nx'].graph)
-            self.nt[x]['nt'].save_graph(f'_view_graph_{x}.html')
-            with open(f'_view_graph_{x}.html', 'r') as f:
+            self.nt[x]['nt'].save_graph(f'view_graph_{x}.html')
+            with open(f'view_graph_{x}.html', 'r') as f:
                 html = f.read()
             self.view[x].setHtml(html)
             layout.addWidget(self.view[x], 0, i, alignment=Qt.AlignCenter)
@@ -237,8 +229,8 @@ class MainProgram(Widget.QComboBox):
 
             nt.toggle_physics(False)
 
-        nt.save_graph(f'_view_graph_{x}.html')
-        with open(f'_view_graph_{x}.html', 'r') as f:
+        nt.save_graph(f'view_graph_{x}.html')
+        with open(f'view_graph_{x}.html', 'r') as f:
             html = f.read()
             self.view[x].setHtml(html)
 
